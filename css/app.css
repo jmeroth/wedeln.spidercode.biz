@@ -1,22 +1,21 @@
 .music {
     border:2px solid black;
-    width:400px;
-    height:300px;
+    width:200px;
+    height:200px;
 	float:left;
+}
+#control {
+    background-color:black;
 }
 #tune1 {
     background-color:red;
-
 }
 #tune2 {
     background-color:blue;
-
 }
 #tune3 {
     background-color:green;
-	clear:both;
 }
 #tune4 {
     background-color:yellow;
-
 }
