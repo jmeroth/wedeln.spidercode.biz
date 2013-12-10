@@ -13,7 +13,7 @@
 
 <?php
 for ($i=1; $i<17; $i++) {
-	echo ("<div id='tune$i' class='music'>Tune $i</div>");
+	echo ("<div id='box$i' class='tile'>box $i</div>");
 }
 ?>
 
@@ -28,82 +28,70 @@ for ($i=1; $i<17; $i++) {
 
 	alert("Hi there.");
 
-/*
 
-	for (var i=1; i<10; i++) {
-		
-		var myId = '#tune' + i;	
-		
-		$(myId).click(function() {   
-	        console.log("Hello World.");	
-			$(myId).css('background-color',$( "#color" ).val());
-	    });
-}
-*/
-
-	$('#tune1').click(function() {   
+	$('#box1').click(function() {   
         console.log("Hello World.");	
-		$('#tune1').css('background-color',$( "#color" ).val());
+		$('#box1').css('background-color',$( "#color" ).val());
     });
-	$('#tune2').click(function() {   
+	$('#box2').click(function() {   
         console.log("Hello World.");	
-		$('#tune2').css('background-color',$( "#color" ).val());
+		$('#box2').css('background-color',$( "#color" ).val());
     });
-	$('#tune3').click(function() {   
+	$('#box3').click(function() {   
         console.log("Hello World.");	
-		$('#tune3').css('background-color',$( "#color" ).val());
+		$('#box3').css('background-color',$( "#color" ).val());
     });
-	$('#tune4').click(function() {   
+	$('#box4').click(function() {   
         console.log("Hello World.");	
-		$('#tune4').css('background-color',$( "#color" ).val());
+		$('#box4').css('background-color',$( "#color" ).val());
     });
-	$('#tune5').click(function() {   
+	$('#box5').click(function() {   
         console.log("Hello World.");	
-		$('#tune5').css('background-color',$( "#color" ).val());
+		$('#box5').css('background-color',$( "#color" ).val());
     });
-	$('#tune6').click(function() {   
+	$('#box6').click(function() {   
         console.log("Hello World.");	
-		$('#tune6').css('background-color',$( "#color" ).val());
+		$('#box6').css('background-color',$( "#color" ).val());
     });
-	$('#tune7').click(function() {   
+	$('#box7').click(function() {   
         console.log("Hello World.");	
-		$('#tune7').css('background-color',$( "#color" ).val());
+		$('#box7').css('background-color',$( "#color" ).val());
     });
-	$('#tune8').click(function() {   
+	$('#box8').click(function() {   
         console.log("Hello World.");	
-		$('#tune8').css('background-color',$( "#color" ).val());
+		$('#box8').css('background-color',$( "#color" ).val());
     });
-	$('#tune9').click(function() {   
+	$('#box9').click(function() {   
         console.log("Hello World.");	
-		$('#tune9').css('background-color',$( "#color" ).val());
+		$('#box9').css('background-color',$( "#color" ).val());
     });
-	$('#tune10').click(function() {   
+	$('#box10').click(function() {   
         console.log("Hello World.");	
-		$('#tune10').css('background-color',$( "#color" ).val());
+		$('#box10').css('background-color',$( "#color" ).val());
     });
-	$('#tune11').click(function() {   
+	$('#box11').click(function() {   
         console.log("Hello World.");	
-		$('#tune11').css('background-color',$( "#color" ).val());
+		$('#box11').css('background-color',$( "#color" ).val());
     });
-	$('#tune12').click(function() {   
+	$('#box12').click(function() {   
         console.log("Hello World.");	
-		$('#tune12').css('background-color',$( "#color" ).val());
+		$('#box12').css('background-color',$( "#color" ).val());
     });
-	$('#tune13').click(function() {   
+	$('#box13').click(function() {   
         console.log("Hello World.");	
-		$('#tune13').css('background-color',$( "#color" ).val());
+		$('#box13').css('background-color',$( "#color" ).val());
     });
-	$('#tune14').click(function() {   
+	$('#box14').click(function() {   
         console.log("Hello World.");	
-		$('#tune14').css('background-color',$( "#color" ).val());
+		$('#box14').css('background-color',$( "#color" ).val());
     });
-	$('#tune15').click(function() {   
+	$('#box15').click(function() {   
         console.log("Hello World.");	
-		$('#tune15').css('background-color',$( "#color" ).val());
+		$('#box15').css('background-color',$( "#color" ).val());
     });
-	$('#tune16').click(function() {   
+	$('#box16').click(function() {   
         console.log("Hello World.");	
-		$('#tune16').css('background-color',$( "#color" ).val());
+		$('#box16').css('background-color',$( "#color" ).val());
     });
 
 

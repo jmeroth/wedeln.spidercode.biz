@@ -1,4 +1,4 @@
-.music {
+.tile {
     border:2px solid black;
     width:200px;
     height:200px;
@@ -7,15 +7,4 @@
 #control {
     background-color:black;
 }
-#tune1 {
-    background-color:red;
-}
-#tune2 {
-    background-color:blue;
-}
-#tune3 {
-    background-color:green;
-}
-#tune4 {
-    background-color:yellow;
-}
+
