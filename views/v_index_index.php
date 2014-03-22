@@ -12,7 +12,7 @@
 </div>
 
 <?php
-for ($i=1; $i<17; $i++) {
+for ($i=1; $i<5; $i++) {
 	echo ("<div id='box$i' class='tile'>box $i</div>");
 }
 ?>
@@ -45,54 +45,5 @@ for ($i=1; $i<17; $i++) {
         console.log("Hello World.");	
 		$('#box4').css('background-color',$( "#color" ).val());
     });
-	$('#box5').click(function() {   
-        console.log("Hello World.");	
-		$('#box5').css('background-color',$( "#color" ).val());
-    });
-	$('#box6').click(function() {   
-        console.log("Hello World.");	
-		$('#box6').css('background-color',$( "#color" ).val());
-    });
-	$('#box7').click(function() {   
-        console.log("Hello World.");	
-		$('#box7').css('background-color',$( "#color" ).val());
-    });
-	$('#box8').click(function() {   
-        console.log("Hello World.");	
-		$('#box8').css('background-color',$( "#color" ).val());
-    });
-	$('#box9').click(function() {   
-        console.log("Hello World.");	
-		$('#box9').css('background-color',$( "#color" ).val());
-    });
-	$('#box10').click(function() {   
-        console.log("Hello World.");	
-		$('#box10').css('background-color',$( "#color" ).val());
-    });
-	$('#box11').click(function() {   
-        console.log("Hello World.");	
-		$('#box11').css('background-color',$( "#color" ).val());
-    });
-	$('#box12').click(function() {   
-        console.log("Hello World.");	
-		$('#box12').css('background-color',$( "#color" ).val());
-    });
-	$('#box13').click(function() {   
-        console.log("Hello World.");	
-		$('#box13').css('background-color',$( "#color" ).val());
-    });
-	$('#box14').click(function() {   
-        console.log("Hello World.");	
-		$('#box14').css('background-color',$( "#color" ).val());
-    });
-	$('#box15').click(function() {   
-        console.log("Hello World.");	
-		$('#box15').css('background-color',$( "#color" ).val());
-    });
-	$('#box16').click(function() {   
-        console.log("Hello World.");	
-		$('#box16').css('background-color',$( "#color" ).val());
-    });
-
 
 </script>
