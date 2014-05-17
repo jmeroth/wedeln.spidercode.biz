@@ -17,7 +17,36 @@
 </head>
 
 <body>	
+	<div id='menu'>
 
+        <a href='/'>Home</a>
+
+        <!-- Menu for users who are logged in -->
+        <?php if($user): ?>
+
+            <a href='/users/logout'>Logout</a>
+            <a href='/users/profile'>Profile</a>
+			<a href='/posts/add'>Add Post</a>
+			<a href='/posts/'>View/Edit Posts</a>
+			<a href='/posts/users'>Follow Users</a>
+			<a href='/posts/venues'>Follow Venues</a>
+
+        <!-- Menu options for users who are not logged in -->
+        <?php else: ?>
+
+            <a href='/users/signup'>Sign up</a>
+            <a href='/users/login'>Log in</a>
+
+        <?php endif; ?>
+
+    </div>
+
+    <br>
+	<div id='banner'>
+		<img src='/uploads/avatars/example.gif' alt='Example'>
+		LocalTunes -
+		Review you're favorite nightspot!
+	</div>
 	<?php if(isset($content)) echo $content; ?>
 
 	<?php if(isset($client_files_body)) echo $client_files_body; ?>
