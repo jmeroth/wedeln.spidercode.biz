@@ -1,0 +1,54 @@
+/* Wereserve
+   p3.spidercode.biz
+*/
+C:\xampp\htdocs
+	core/
+		bootstrap.php
+		libraries/
+			DB.php
+				instance(DB_NAME)
+				insert('users', $_POST)
+				select_field($q)
+				select_rows($q)
+				select_array($q, 'user_id_followed')
+				update("users", $data, "WHERE token = '".$this->user->token."'")
+				delete('users_users', $where_condition)
+			Router.php
+				redirect("/users/login/")
+			File.php
+			View.php
+				instance('v_posts_users')
+		vendors/
+	environment.php
+	p3.spidercode.biz/
+		.htaccess
+		index.php
+		config/
+			config.php
+			feature_flags.php
+		controllers/
+			c_base.php
+			c_index.php
+			c_practice.php
+			c_users.php
+				index()
+				signup()  --  v_users_signup
+				p_signup()
+				login()  --  v_users_login
+				p_login()  --  redirect("/users/login/<email or password>_error") OR ("/")
+				logout()  --  redirect("/")
+				profile()  --  v_users_profile  --  redirect('/users/login')
+
+		css/
+			app.css
+		js/
+		views/
+			_v_email.php
+			_v_template.php
+			v_users_profile.php
+			v_users_signup.php
+			v_users_login.php
+			v_index_index.php
+
+
+

@@ -44,8 +44,8 @@
     <br>
 	<div id='banner'>
 		<img src='/uploads/avatars/example.gif' alt='Example'>
-		LocalTunes -
-		Review you're favorite nightspot!
+		Wereserve -
+		Reserve a bed at the Wedeln club house!
 	</div>
 	<?php if(isset($content)) echo $content; ?>
 
