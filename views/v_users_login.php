@@ -9,7 +9,7 @@
     <br><br>
 
 	<?php if($error == 'password_error'): ?>
-        <div class='error' style="color: #090; line-height: 1.2">
+        <div class='error' style="color: #FF0000; line-height: 1.2">
             Login failed. Please double check your password.
         </div>
         <br>
@@ -17,7 +17,7 @@
 
 
 	<?php if($error == 'email_error'): ?>
-        <div class='error' style="color: #090; line-height: 1.2">
+        <div class='error' style="color: #FF0000; line-height: 1.2">
             Login failed. Please double check your email.
         </div>
         <br>

@@ -1,14 +1,17 @@
-.tile {
-    border:2px solid black;
-    width:200px;
-    height:200px;
-	float:left;
+#container {
+	font-size: 1em;
 }
-#control {
-    background-color:black;
-}
-#banner {
-	font-size:2em;
-}
-	
 
+.main {
+	float: left;
+	width: 65.8%;
+}
+
+aside {
+	float: right;
+	width: 31.6%;
+}
+
+.cat {
+
+}
