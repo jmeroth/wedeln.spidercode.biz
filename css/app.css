@@ -1,17 +1,44 @@
-#container {
-	font-size: 1em;
+body {
+	font-size: 100%;
 }
 
+#container {
+	width: 95%
+	padding: .625em 1.05% 1.5em;
+	margin: auto 0;
+}
+
+#menu {
+	font-size: 1.8em;
+}
+	
 .main {
-	float: left;
-	width: 65.8%;
+ 	float: left;
+ 	width: 65.8%;
+}
+
+#content {
+
 }
 
 aside {
-	float: right;
+ 	float: right;
 	width: 31.6%;
+}
+
+aside img {
+	width: 100%;
+	max-width: 100%;
 }
 
 .cat {
 
 }
+
+* {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+
