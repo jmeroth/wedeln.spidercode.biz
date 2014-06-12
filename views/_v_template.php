@@ -49,7 +49,7 @@
 				</ul>
 			</section>
 			<section class='cat'>
-				<img src='/uploads/avatars/example.gif' alt='Example'>
+				<img src='/uploads/avatars/snowflake.gif' alt='Snowflake'>
 			</section>
 			<section class='banner'>
 				<h2>Reserve a spot at the house!</h2>
