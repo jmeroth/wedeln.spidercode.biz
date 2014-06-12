@@ -14,7 +14,7 @@
 	<!-- Controller Specific JS/CSS -->
 	<?php if(isset($client_files_head)) echo $client_files_head; ?>	
 </head>
-
+<meta name="viewport" content="width=device-width; initial-scale=1.0">
 <body>
 	<div id='container'>
 		<div id='menu'>
@@ -23,10 +23,9 @@
 			<?php if($user): ?>
 				<a href='/users/logout'>Logout</a>
 				<a href='/users/profile'>Profile</a>
-				<a href='/posts/add'>Add Post</a>
-				<a href='/posts/'>View/Edit Posts</a>
-				<a href='/posts/users'>Follow Users</a>
-				<a href='/posts/venues'>Follow Venues</a>
+				<a href='/reservations/add'>Add guest</a>
+				<a href='/reservations/'>View guests</a>
+
 			<!-- Menu options for users who are not logged in -->
 			<?php else: ?>
 				<a href='/users/signup'>Sign up</a>
