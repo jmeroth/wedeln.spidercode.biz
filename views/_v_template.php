@@ -16,22 +16,28 @@
 </head>
 <meta name="viewport" content="width=device-width; initial-scale=1.0">
 <body>
-	<div id='container'>
-		<div id='menu'>
-			<a href='/'>Home</a>
+	<nav role='navigation'>
+		<div class ='inner'>
+
+			<ul class='nav id=n'nav'>
+			<li class='active'><a href='/'>Home</a></li>
 			<!-- Menu for users who are logged in -->
 			<?php if($user): ?>
-				<a href='/users/logout'>Logout</a>
-				<a href='/users/profile'>Profile</a>
-				<a href='/reservations/add'>Add guest</a>
-				<a href='/reservations/'>View guests</a>
+				<li><a href='/users/logout'>Logout</a></li>
+				<li><a href='/users/profile'>Profile</a></li>
+				<li><a href='/reservations/add'>Add guest</a></li>
+				<li><a href='/reservations/'>View guests</a></li>
 
 			<!-- Menu options for users who are not logged in -->
 			<?php else: ?>
-				<a href='/users/signup'>Sign up</a>
-				<a href='/users/login'>Log in</a>
+				<li><a href='/users/signup'>Sign up</a></li>
+				<li><a href='/users/login'>Log in</a></li>
 			<?php endif; ?>
+			</ul>
 		</div>
+	</nav>
+	<div id='container'>
+		
 		<article class='main'>
 			<p>Responsive Web design is the approach that suggests that design and development should respond to the user's behavior and environment based on screen size, platform and orientation. The practice consists of a mix of flexible grids and layouts, images and an intelligent use of CSS media queries. As the user switches from their laptop to iPad, the website should automatically switch to accommodate for resolution, image size and scripting abilities. In other words, the website should have the technology to automatically respond to the user's preferences. This would eliminate the need for a different design and development phase for each new gadget on the market.</p>
 			<section id='content'>
