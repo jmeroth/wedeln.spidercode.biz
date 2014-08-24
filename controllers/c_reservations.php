@@ -70,7 +70,7 @@ class reservations_controller extends base_controller {
 
 	    # Pass data to the View
 	    $this->template->content->guests = $guests;
-
+	
 	    # Render the View
 	    echo $this->template;
 
@@ -82,7 +82,7 @@ class reservations_controller extends base_controller {
 		# Unix timestamp of when this post was created / modified
 		$_POST['modified'] = Time::now();
 
-		# Modify guestlist
+		# Remove a record from guestlist
 		# DB::instance(DB_NAME)->update('reservations', $_POST, "WHERE reservation_id ='".$reservation_id."'");
 		DB::instance(DB_NAME)->delete('guests', "WHERE guest_id = '".$guest_id."'");
 		# Quick and dirty feedback

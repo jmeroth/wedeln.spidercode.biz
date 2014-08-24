@@ -14,4 +14,14 @@
 
 <?php endforeach; ?>
 
+
+<form method='POST' action='/reservations/p_assign'>
+
+	<tr>
+		<td></td><td>reservation</td><td><input type='submit' value='Assign now!'></td>
+	</tr>
+
+</form>
+
+
 </table>

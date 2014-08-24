@@ -18,8 +18,8 @@
 <body>
 	<nav role='navigation'>
 		<div class ='inner'>
-
-			<ul class='nav id=n'nav'>
+			<a href="#nav" class="nav-collapse" id="nav-collapse">Menu</a>
+			<ul class='nav' id='nav'>
 			<li class='active'><a href='/'>Home</a></li>
 			<!-- Menu for users who are logged in -->
 			<?php if($user): ?>
@@ -62,5 +62,6 @@
 			</section>
 		</aside>
 	</div><!-- /#container -->
+	<script type="text/javascript" src="/js/yass.js"></script>
 </body>
 </html>
