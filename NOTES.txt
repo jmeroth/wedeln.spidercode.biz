@@ -21,32 +21,33 @@ C:\xampp\htdocs
 			View.php
 				instance('v_posts_users')
 		vendors/
-	environment.php			--define parameters for local or live environment
-	p3.spidercode.biz/		|start|->|enter guest info|->|view info|->|make reservation| 
-		.htaccess			--Rewrite rule
-		index.php			--defines routing array
+	environment.php					--define parameters for local or live environment
+	p3.spidercode.biz/				--|start|->|enter guest info|->|view info|->|make reservation| 
+		.htaccess					--Rewrite rule
+		index.php					--defines routing array
 		config/
-			config.php		--App name, email, DB name
+			config.php				--App name, email, DB name
 			feature_flags.php
 		controllers/
 			c_base.php
-			c_index.php		--calls the v_index_index view
+			c_index.php				--calls the v_index_index view
 			c_practice.php
+			c_reservations.php
 			c_users.php
 				index()
-				signup()  --  v_users_signup
+				signup()  			--  v_users_signup
 				p_signup()
-				login()  --  v_users_login
-				p_login()  --  redirect("/users/login/<email or password>_error") OR ("/")
-				logout()  --  redirect("/")
-				profile()  --  v_users_profile  --  redirect('/users/login')
+				login()  			--  v_users_login
+				p_login()  			--  redirect("/users/login/<email or password>_error") OR ("/")
+				logout()  			--  redirect("/")
+				profile()  			--  v_users_profile  --  redirect('/users/login')
 
 		css/
 			app.css
 		js/
 		views/
 			_v_email.php
-			_v_template.php
+			_v_template.php			--contains menu items
 			v_users_profile.php
 			v_users_signup.php
 			v_users_login.php
