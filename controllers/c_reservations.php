@@ -21,16 +21,7 @@ class reservations_controller extends base_controller {
 
     }
 
-    public function edit() {
 
-        # Setup view
-        $this->template->content = View::instance('v_reservations_edit');
-        $this->template->title   = "Edit Post";
-
-        # Render template
-        echo $this->template;
-
-    }
 
     public function p_add() {
 
@@ -77,7 +68,7 @@ class reservations_controller extends base_controller {
 	}
 
 
-	public function p_index($guest_id) {
+	public function p_remove($guest_id) {
 
 		# Unix timestamp of when this post was created / modified
 		$_POST['modified'] = Time::now();
@@ -90,23 +81,5 @@ class reservations_controller extends base_controller {
     }
 
 
-	
-	    public function logout() {
-        # Generate and save a new token for next login
-	    $new_token = sha1(TOKEN_SALT.$this->user->email.Utils::generate_random_string());
-
-	    # Create the data array we'll use with the update method
-	    # In this case, we're only updating one field, so our array only has one entry
-	    $data = Array("token" => $new_token);
-
-	    # Do the update
-	    DB::instance(DB_NAME)->update("users", $data, "WHERE token = '".$this->user->token."'");
-
-	    # Delete their token cookie by setting it to a date in the past - effectively logging them out
-	    setcookie("token", "", strtotime('-1 year'), '/');
-
-	    # Send them back to the main index.
-	    Router::redirect("/");
-    }
 }
 ?>
