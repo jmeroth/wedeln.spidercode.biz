@@ -4,7 +4,7 @@
 	<label for='guestname'>Name:</label><br>
 	<input type='text' name='guestname'><br>
 
-    <label for='roomid'>M or F:</label><br>
+    <label for='gender'>M or F:</label><br>
 	<input type ='text' name='gender'><br>
 
 	

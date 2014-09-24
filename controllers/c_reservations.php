@@ -53,11 +53,69 @@ class reservations_controller extends base_controller {
 	    $q = 'SELECT 
 				guests.guest_id,
 	            guests.guestname,
-				guests.gender
+				guests.gender,
+				guests.roomid
 	        FROM guests';
 
 	    # Run the query
 	    $guests = DB::instance(DB_NAME)->select_rows($q);
+
+	    # Pass data to the View
+	    $this->template->content->guests = $guests;
+	
+	    # Render the View
+	    echo $this->template;
+
+	}
+	
+		public function p_assign() {
+
+		echo "c_reservations p_assign method called<br><br>";
+		
+		#$myRoom = array("roomid" => 2);
+		
+	    # Set up the View
+	    $this->template->content = View::instance('v_reservations_index');
+	    $this->template->title   = "All guests";
+
+		# set the roomid
+		#DB::instance(DB_NAME)->update('guests', $myRoom, "WHERE 1");
+		
+	    # Build the query
+	    $q = 'SELECT 
+				guests.guest_id,
+	            guests.guestname,
+				guests.gender,
+				guests.roomid
+	        FROM guests
+			WHERE guests.roomid is NULL';
+
+
+	    # Run the query
+	    $guests = DB::instance(DB_NAME)->select_rows($q);
+		
+		
+		# Assign rooms to guests
+		foreach ($guests as $guest) {
+			echo "gender is: $guest[gender]";
+			$mygender = $guest['gender'];
+			$r = "SELECT 
+				rooms.roomid,
+	            rooms.gender,
+				rooms.fillorder,
+				rooms.capacity,
+				rooms.occupancy
+				FROM rooms
+				WHERE gender = '".$mygender."'";
+			$rooms = DB::instance(DB_NAME)->select_rows($r);
+			print_r($rooms);
+			
+			$num = array_pop($rooms)['roomid'];
+			echo $num;
+			
+			$myRoom = array("roomid" => $num);
+			DB::instance(DB_NAME)->update('guests', $myRoom, "WHERE guest_id = '".$guest['guest_id']."'");	
+		}
 
 	    # Pass data to the View
 	    $this->template->content->guests = $guests;

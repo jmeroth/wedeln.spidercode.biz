@@ -33,6 +33,11 @@ C:\xampp\htdocs
 			c_index.php				--calls the v_index_index view
 			c_practice.php
 			c_reservations.php
+				add()
+				p_add()
+				index()
+				p_assign()
+				p_remove()
 			c_users.php
 				index()
 				signup()  			--  v_users_signup
