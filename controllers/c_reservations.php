@@ -49,16 +49,23 @@ class reservations_controller extends base_controller {
 	    $this->template->content = View::instance('v_reservations_index');
 	    $this->template->title   = "All guests";
 
-	    # Build the query
+	    # Build the guest query
 	    $q = 'SELECT 
 				guests.guest_id,
 	            guests.guestname,
 				guests.gender,
 				guests.roomid
 	        FROM guests';
-
-	    # Run the query
+	    # Run the guest query
 	    $guests = DB::instance(DB_NAME)->select_rows($q);
+		
+		# Build the vacancy query
+	    $v = 'SELECT 
+				sum(rooms.capacity - rooms.occupancy) as vacancy
+				FROM rooms';
+	    # Run the vaconcy query
+	    $vacancy = DB::instance(DB_NAME)->select_rows($v);
+		echo "There are currently " . $vacancy[0]['vacancy'] . " beds remaining.";
 
 	    # Pass data to the View
 	    $this->template->content->guests = $guests;
