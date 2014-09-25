@@ -34,8 +34,8 @@ class reservations_controller extends base_controller {
         print_r($_POST);
 		echo "<br/>***<br/>";
 
-        # Quick and dirty feedback
-        echo "Your guest has been added. <a href='/reservations/add'>Add another</a>";
+        # redirect to view the list of guests
+		Router::redirect("/reservations");
 
     }
 
@@ -69,17 +69,10 @@ class reservations_controller extends base_controller {
 	}
 	
 		public function p_assign() {
-
-		echo "c_reservations p_assign method called<br><br>";
-		
-		#$myRoom = array("roomid" => 2);
 		
 	    # Set up the View
 	    $this->template->content = View::instance('v_reservations_index');
 	    $this->template->title   = "All guests";
-
-		# set the roomid
-		#DB::instance(DB_NAME)->update('guests', $myRoom, "WHERE 1");
 		
 	    # Build the query
 	    $q = 'SELECT 
@@ -90,11 +83,9 @@ class reservations_controller extends base_controller {
 	        FROM guests
 			WHERE guests.roomid is NULL';
 
-
 	    # Run the query
 	    $guests = DB::instance(DB_NAME)->select_rows($q);
-		
-		
+				
 		# Assign rooms to guests
 		foreach ($guests as $guest) {
 			echo "gender is: $guest[gender]";
@@ -106,22 +97,42 @@ class reservations_controller extends base_controller {
 				rooms.capacity,
 				rooms.occupancy
 				FROM rooms
-				WHERE gender = '".$mygender."'";
+				WHERE gender = '".$mygender."'
+				and occupancy != capacity";
 			$rooms = DB::instance(DB_NAME)->select_rows($r);
-			print_r($rooms);
-			
-			$num = array_pop($rooms)['roomid'];
-			echo $num;
-			
+			echo count($rooms);
+			$roomarray = array_pop($rooms);
+			$num = $roomarray['roomid'];
+			echo $num;			
 			$myRoom = array("roomid" => $num);
-			DB::instance(DB_NAME)->update('guests', $myRoom, "WHERE guest_id = '".$guest['guest_id']."'");	
+			DB::instance(DB_NAME)->update('guests', $myRoom, "WHERE guest_id = '".$guest['guest_id']."'");
+			
+			# Adjust room occupancy
+			$newocc = $roomarray['occupancy'] + 1;
+			$myocc = array("occupancy" => $newocc);
+			DB::instance(DB_NAME)->update('rooms', $myocc, "WHERE roomid = '".$num."'");	
 		}
+		
+		# re-build the query
+	    $q = 'SELECT 
+				guests.guest_id,
+	            guests.guestname,
+				guests.gender,
+				guests.roomid
+	        FROM guests
+			WHERE guests.roomid is NULL';
 
+	    # Re-run the query
+	    $guests = DB::instance(DB_NAME)->select_rows($q);
 	    # Pass data to the View
 	    $this->template->content->guests = $guests;
 	
 	    # Render the View
 	    echo $this->template;
+		
+		# redirect to view the list of guests
+		Router::redirect("/reservations");
+		
 
 	}
 
