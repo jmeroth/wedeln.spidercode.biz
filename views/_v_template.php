@@ -27,10 +27,12 @@
 				<li><a href='/users/profile'>Profile</a></li>
 				<li><a href='/reservations/add'>Add guest</a></li>
 				<li><a href='/reservations/'>View guests</a></li>
-
+				<?php if($user->first_name == 'vp'): ?>			
+					<li><a href='/users/signup'>Sign up new member</a></li>
+				<?php endif; ?>
 			<!-- Menu options for users who are not logged in -->
 			<?php else: ?>
-				<li><a href='/users/signup'>Sign up</a></li>
+				<!-- <li><a href='/users/signup'>Sign up</a></li>  moved to logged in menu --> 
 				<li><a href='/users/login'>Log in</a></li>
 			<?php endif; ?>
 			</ul>
@@ -39,7 +41,7 @@
 	<div id='container'>
 		
 		<article class='main'>
-			<p>This application may be used to reserve a room for your guests at the Wedeln club house.</p>
+			<p>Welcome To Wedeln! Wedeln Ski & Outdoors Club is an active four-season club located in New Hampshire's Mt. Washington Valley. Throughout the year, members and guests participate in a wide variety of organized activities and social events offered both through the club and through our affiliation with the Eastern Inter-Club Ski League (EICSL) - making Wedeln much more than just a ski club!</p>
 			<section id='content'>
 				<?php if(isset($content)) echo $content; ?>
 				<?php if(isset($client_files_body)) echo $client_files_body; ?>
@@ -47,11 +49,11 @@
 		</article>
 		<aside>
 			<section class='activities'>
-				<h2>Upcomming activities!</h2>
+				<h2>Useful Links:</h2>
 				<ul>
-					<li>Hiking</li>
-					<li>Golf</li>
-					<li>Canoeing</li>
+					<li><a href='http://groupspaces.com/Wedeln/'>groupspaces</a></li>
+					<li><a href='http://www.wedeln.com/'>Wedeln web site</a></li>
+					<li><a href='http://www.eicsl.org/'>EICSL</a></li>
 				</ul>
 			</section>
 			<section class='cat'>
