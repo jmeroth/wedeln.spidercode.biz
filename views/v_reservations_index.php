@@ -1,11 +1,16 @@
-<table border='1' width='25'>
-
+<table width='40%' BORDER=0 CELLPADDING=3 CELLSPACING=1 
+    RULES=ROWS FRAME=HSIDES>
+	<tr>
+		<th>Name</th>
+		<th>Sex</th>
+		<th>Room</th>
+	<tr/>
 <?php foreach($guests as $guest): ?>
 <form method='POST' action='/reservations/p_remove/<?=$guest['guest_id']?>'>
 	<tr>
 		<td><?=$guest['guestname']?></td>
-		<td><?=$guest['gender']?></td>
-		<td><?=$guest['roomid']?></td>
+		<td align='center'><?=$guest['gender']?></td>
+		<td align='center'><?=$guest['roomid']?></td>
 		<td><input type='submit' value='remove'></td>
 	</tr>
 </form>
@@ -13,11 +18,9 @@
 
 
 
-
-
 <form method='POST' action='/reservations/p_assign'>
 	<tr>
-		<td></td><td><input type='submit' value='Assign room now!'></td>
+		<td></td><td></t><td><input type='submit' value='Assign room now!'></td>
 	</tr>
 </form>
 

@@ -41,7 +41,7 @@
 	<div id='container'>
 		
 		<article class='main'>
-			<p>Welcome To Wedeln! Wedeln Ski & Outdoors Club is an active four-season club located in New Hampshire's Mt. Washington Valley. Throughout the year, members and guests participate in a wide variety of organized activities and social events offered both through the club and through our affiliation with the Eastern Inter-Club Ski League (EICSL) - making Wedeln much more than just a ski club!</p>
+			<p>Welcome To Wedeln! Wedeln Ski & Outdoors Club is an active four-season club located in New Hampshire's Mt. Washington Valley.</p>
 			<section id='content'>
 				<?php if(isset($content)) echo $content; ?>
 				<?php if(isset($client_files_body)) echo $client_files_body; ?>

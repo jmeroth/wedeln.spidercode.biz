@@ -1,0 +1,9 @@
+2014-10-08 17:17:21 - INFO --> -------------------------- 
+2014-10-08 17:17:21 - INFO --> Controller/Method: users/p_signup 
+2014-10-08 17:17:21 - INFO --> OUTGOING EMAILS ARE DISABLED. THIS EMAIL WAS NOT SENT TO THE RECIPIENTS, ONLY webmaster@spidercode.biz 
+2014-10-08 17:17:21 - INFO --> From: wereserve (webmaster@spidercode.biz) 
+2014-10-08 17:17:21 - INFO --> To: member (member),  
+2014-10-08 17:17:21 - INFO --> CC:  
+2014-10-08 17:17:21 - INFO --> BCC:  
+2014-10-08 17:17:21 - INFO --> Subject: Welcome to LocalTunes 
+2014-10-08 17:17:21 - INFO --> Body: This is just a message to confirm your registration at p2.spidercode.biz 
