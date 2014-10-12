@@ -11,8 +11,5 @@
 	<tr>
 		<td><b>Email: </b><em><?=$user->email?></em></td>
 	</tr>
-	<tr>
-		<td><b>Timezone: </b><em><?=$user->timezone?></em></td>
-	</tr>
 </table>
 

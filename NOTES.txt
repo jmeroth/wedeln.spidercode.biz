@@ -22,7 +22,7 @@ C:\xampp\htdocs
 				instance('v_posts_users')
 		vendors/
 	environment.php					--define parameters for local or live environment
-	p3.spidercode.biz/				--|start|->|enter guest info|->|view info|->|make reservation| 
+	p3.spidercode.biz/				--|start|->
 		.htaccess					--Rewrite rule
 		index.php					--defines routing array
 		config/
