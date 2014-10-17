@@ -6,6 +6,9 @@
 
     <label for='gender'>M or F:</label><br>
 	<input type ='text' name='gender'><br>
+	
+	<label for='guestof'>Guest of:</label><br>
+	<input type ='text' name='guestof' value="<?=$user->user_id?>"><br>
 
 	
     <br><br>

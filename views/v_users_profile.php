@@ -11,5 +11,8 @@
 	<tr>
 		<td><b>Email: </b><em><?=$user->email?></em></td>
 	</tr>
+	<tr>
+		<td><b>Role: </b><em><?=$user->role?></em></td>
+	</tr>
 </table>
 

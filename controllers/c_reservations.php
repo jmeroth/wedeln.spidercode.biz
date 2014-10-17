@@ -14,7 +14,8 @@ class reservations_controller extends base_controller {
 
         # Setup view
         $this->template->content = View::instance('v_reservations_add');
-        $this->template->title   = "New Post";
+		
+        $this->template->title   = "Add Guests";
 
         # Render template
         echo $this->template;
@@ -77,19 +78,23 @@ class reservations_controller extends base_controller {
 	
 		public function all() {
 
-		#echo "c_reservations index method called<br><br>";
-
 	    # Set up the View
 	    $this->template->content = View::instance('v_reservations_index');
 	    $this->template->title   = "Guests to book";
 
 	    # Build the guest query
+		if ($this->user->role == 'vp') {
+			$clause=" WHERE 1";
+		} else {
+			$clause=" WHERE guests.guestof = '".$this->user->user_id."'";	
+		}
 	    $q = 'SELECT 
 				guests.guest_id,
 	            guests.guestname,
 				guests.gender,
 				guests.roomid
-	        FROM guests';
+	        FROM guests'.$clause;
+			
 	    # Run the guest query
 	    $guests = DB::instance(DB_NAME)->select_rows($q);
 		

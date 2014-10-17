@@ -27,7 +27,7 @@
 				<li><a href='/users/profile'>Profile</a></li>
 				<li><a href='/reservations/add'>Add guest</a></li>
 				<li><a href='/reservations/all'>View guests</a></li>
-				<?php if($user->first_name == 'vp'): ?>			
+				<?php if($user->role == 'vp'): ?>			
 					<li><a href='/users/signup'>Sign up new member</a></li>
 				<?php endif; ?>
 			<!-- Menu options for users who are not logged in -->
@@ -49,7 +49,7 @@
 		</article>
 		<aside>
 			<section class='activities'>
-				<h2>Useful Links:</h2>
+				<h2>Links:</h2>
 				<ul>
 					<li><a href='http://groupspaces.com/Wedeln/'>groupspaces</a></li>
 					<li><a href='http://www.wedeln.com/'>Wedeln web site</a></li>
@@ -60,7 +60,7 @@
 				<img src='/uploads/avatars/Snowflake.gif' alt='Snowflake'>
 			</section>
 			<section class='banner'>
-				<h2>Reserve a spot at the house!</h2>
+				<h2>Reserve your spot today!</h2>
 			</section>
 		</aside>
 	</div><!-- /#container -->
