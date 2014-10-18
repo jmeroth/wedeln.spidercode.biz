@@ -26,14 +26,9 @@ class reservations_controller extends base_controller {
 
     public function p_add() {
 
-        # Insert
+        # Insert:  insert('table-name', array from forms post method)
         # Note didn't have to sanitize $_POST data because the insert method does it for us
-        DB::instance(DB_NAME)->insert('guests', $_POST);  //insert('table-name', array from forms post method)
-
-		echo "<br/>***<br/>";
-		# current post
-        print_r($_POST);
-		echo "<br/>***<br/>";
+        DB::instance(DB_NAME)->insert('guests', $_POST);
 
         # redirect to view the list of guests
 		Router::redirect('/reservations');
@@ -135,7 +130,6 @@ class reservations_controller extends base_controller {
 				
 		# Assign rooms to guests
 		foreach ($guests as $guest) {
-			echo "gender is: $guest[gender]";
 			$mygender = $guest['gender'];
 			$r = "SELECT 
 				rooms.roomid,
@@ -147,10 +141,8 @@ class reservations_controller extends base_controller {
 				WHERE gender = '".$mygender."'
 				and occupancy != capacity";
 			$rooms = DB::instance(DB_NAME)->select_rows($r);
-			echo count($rooms);
 			$roomarray = array_pop($rooms);
-			$num = $roomarray['roomid'];
-			echo $num;			
+			$num = $roomarray['roomid'];		
 			$myRoom = array("roomid" => $num);
 			DB::instance(DB_NAME)->update('guests', $myRoom, "WHERE guest_id = '".$guest['guest_id']."'");
 			
