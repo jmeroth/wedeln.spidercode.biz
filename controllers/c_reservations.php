@@ -200,7 +200,6 @@ class reservations_controller extends base_controller {
 		$rooms = DB::instance(DB_NAME)->select_rows($r);
 		
 		# Adjust down room occupancy
-		print_r($rooms);
 		$newocc = $rooms[0]['occupancy'] - 1;
 		$myocc = array("occupancy" => $newocc);
 		DB::instance(DB_NAME)->update('rooms', $myocc, "WHERE roomid = '".$guestroom."'");			
@@ -208,8 +207,7 @@ class reservations_controller extends base_controller {
 		# Remove a record from guestlist
 		# DB::instance(DB_NAME)->update('reservations', $_POST, "WHERE reservation_id ='".$reservation_id."'");
 		DB::instance(DB_NAME)->delete('guests', "WHERE guest_id = '".$guest_id."'");
-		# Quick and dirty feedback
-        echo "Your guest list has been modified. <a href='/reservations'>return to guest list</a>";
+		# Redirect to show reservations
 		Router::redirect("/reservations/all/");
     }
 
