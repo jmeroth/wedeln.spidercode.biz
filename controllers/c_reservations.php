@@ -36,7 +36,7 @@ class reservations_controller extends base_controller {
 		echo "<br/>***<br/>";
 
         # redirect to view the list of guests
-		Router::redirect("/reservations");
+		Router::redirect('/reservations');
 
     }
 
@@ -83,6 +83,7 @@ class reservations_controller extends base_controller {
 	    $this->template->title   = "Guests to book";
 
 	    # Build the guest query
+		# Define the WHERE clause, if vp show all guests.
 		if ($this->user->role == 'vp') {
 			$clause=" WHERE 1";
 		} else {
