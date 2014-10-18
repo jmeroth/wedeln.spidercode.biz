@@ -26,7 +26,9 @@
 
 </table>
 
-<!--  Display Room info
+<!--  Display Room info 
+      Would need to query room data and send it to the View using:
+		$this->template->content->rooms = $rooms;
 <table>
 <?php foreach($rooms as $room): ?>
 	<tr>

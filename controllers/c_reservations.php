@@ -56,12 +56,19 @@ class reservations_controller extends base_controller {
 	    $guests = DB::instance(DB_NAME)->select_rows($q);
 		
 		# Build the vacancy query
-	    $v = 'SELECT 
+		$v = 'SELECT
+				rooms.gender,
 				sum(rooms.capacity - rooms.occupancy) as vacancy
-				FROM rooms';
-	    # Run the vaconcy query
+				FROM rooms
+				GROUP BY rooms.gender';
+				
+	    # Run the vacancy query
 	    $vacancy = DB::instance(DB_NAME)->select_rows($v);
-		echo "There are currently " . $vacancy[0]['vacancy'] . " beds remaining.";
+		echo "There are currently " 
+		. $vacancy[0]['vacancy'] . " undeclared beds, " 
+		. $vacancy[1]['vacancy'] . " female beds and " 
+		. $vacancy[2]['vacancy'] . " male beds remaining." 
+		;
 
 	    # Pass data to the View
 	    $this->template->content->guests = $guests;
@@ -95,16 +102,25 @@ class reservations_controller extends base_controller {
 	    $guests = DB::instance(DB_NAME)->select_rows($q);
 		
 		# Build the vacancy query
-	    $v = 'SELECT 
+		$v = 'SELECT
+				rooms.gender,
 				sum(rooms.capacity - rooms.occupancy) as vacancy
-				FROM rooms';
-	    # Run the vaconcy query
+				FROM rooms
+				GROUP BY rooms.gender';
+				
+	    # Run the vacancy query
 	    $vacancy = DB::instance(DB_NAME)->select_rows($v);
-		echo "There are currently " . $vacancy[0]['vacancy'] . " beds remaining.";
-
+		echo "There are currently " 
+		. $vacancy[0]['vacancy'] . " undeclared beds, " 
+		. $vacancy[1]['vacancy'] . " female beds and " 
+		. $vacancy[2]['vacancy'] . " male beds remaining." 
+		;
+		
+		
 	    # Pass data to the View
 	    $this->template->content->guests = $guests;
-	
+
+		
 	    # Render the View
 	    echo $this->template;
 
@@ -165,6 +181,7 @@ class reservations_controller extends base_controller {
 	    $guests = DB::instance(DB_NAME)->select_rows($q);
 	    # Pass data to the View
 	    $this->template->content->guests = $guests;
+
 	
 	    # Render the View
 	    echo $this->template;
