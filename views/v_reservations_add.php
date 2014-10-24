@@ -4,14 +4,17 @@
 	<label for='guestname'>Name:</label><br>
 	<input type='text' name='guestname'><br>
 
-    <label for='gender'>M or F:</label><br>
-	<input type ='text' name='gender'><br>
+    <label for='gender'>Male or Female:</label><br>
+	<select name='gender'>
+		<option>M</option>
+		<option>F</option>
+	</select>
 	
-	<label for='guestof'>Guest of:</label><br>
-	<input type ='text' name='guestof' value="<?=$user->user_id?>"><br>
+	<!-- invisibly posts id of logged in user -->
+	<input type ='hidden' name='guestof' value="<?=$user->user_id?>"><br>
 
 	
     <br><br>
-    <input type='submit' value='add guest'>
+    <input type='submit' value='Submit guest'>
 
 </form> 

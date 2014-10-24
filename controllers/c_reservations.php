@@ -110,8 +110,8 @@ class reservations_controller extends base_controller {
 				
 	    # Run the vacancy query
 	    $vacancy = DB::instance(DB_NAME)->select_rows($v);
-		echo "There are currently " 
-		. $vacancy[0]['vacancy'] . " undeclared beds, " 
+		echo "Currently: " 
+		. $vacancy[0]['vacancy'] . " undeclared beds, "
 		. $vacancy[1]['vacancy'] . " female beds and " 
 		. $vacancy[2]['vacancy'] . " male beds remaining." 
 		;

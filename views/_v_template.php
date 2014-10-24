@@ -21,6 +21,7 @@
 			<a href="#nav" class="nav-collapse" id="nav-collapse">Menu</a>
 			<ul class='nav' id='nav'>
 			<li class='active'><a href='/'>Home</a></li>
+			<li class='active'><a href='/links'>Links</a></li>
 			<!-- Menu for users who are logged in -->
 			<?php if($user): ?>
 				<li><a href='/users/logout'>Logout</a></li>
@@ -41,26 +42,19 @@
 	<div id='container'>
 		
 		<article class='main'>
-			<p>Welcome To Wedeln! Wedeln Ski & Outdoors Club is an active four-season club located in New Hampshire's Mt. Washington Valley.</p>
+			
 			<section id='content'>
 				<?php if(isset($content)) echo $content; ?>
 				<?php if(isset($client_files_body)) echo $client_files_body; ?>
 			</section>
 		</article>
 		<aside>
-			<section class='activities'>
-				<h2>Links:</h2>
-				<ul>
-					<li><a href='http://groupspaces.com/Wedeln/'>groupspaces</a></li>
-					<li><a href='http://www.wedeln.com/'>Wedeln web site</a></li>
-					<li><a href='http://www.eicsl.org/'>EICSL</a></li>
-				</ul>
-			</section>
+			
 			<section class='cat'>
 				<img src='/uploads/avatars/Snowflake.gif' alt='Snowflake'>
 			</section>
 			<section class='banner'>
-				<h2>Reserve your spot today!</h2>
+				<h2></h2>
 			</section>
 		</aside>
 	</div><!-- /#container -->

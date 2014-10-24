@@ -23,14 +23,17 @@ C:\xampp\htdocs
 		vendors/
 	environment.php					--define parameters for local or live environment
 	p3.spidercode.biz/				--|start|->
-		.htaccess					--Rewrite rule
+		.htaccess					--Rewrite rule, entry point, routes to index.php
 		index.php					--defines routing array
+		NOTES.txt					--this file
+		README.md
 		config/
 			config.php				--App name, email, DB name
 			feature_flags.php
-		controllers/
+		controllers/				--set the $content variable, then echo the template view
 			c_base.php
-			c_index.php				--calls the v_index_index view
+			c_index.php				--contains spcl routing array, calls c_index --> v_index_index
+			c_links.php
 			c_practice.php
 			c_reservations.php
 				add()
@@ -52,11 +55,11 @@ C:\xampp\htdocs
 		js/
 		views/
 			_v_email.php
-			_v_template.php			--contains menu items
+			_v_template.php			--contains menu items, echos: $content
 			v_users_profile.php
 			v_users_signup.php
 			v_users_login.php
-			v_index_index.php
+			v_index_index.php		--uses the _v_template view
 
 
 
