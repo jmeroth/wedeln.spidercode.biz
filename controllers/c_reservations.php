@@ -10,33 +10,7 @@ class reservations_controller extends base_controller {
         }
     }
 
-    public function add() {
-
-        # Setup view
-        $this->template->content = View::instance('v_reservations_add');
-		
-        $this->template->title   = "Add Guests";
-
-        # Render template
-        echo $this->template;
-
-    }
-
-
-
-    public function p_add() {
-
-        # Insert:  insert('table-name', array from forms post method)
-        # Note didn't have to sanitize $_POST data because the insert method does it for us
-        DB::instance(DB_NAME)->insert('guests', $_POST);
-
-        # redirect to view the list of guests
-		Router::redirect('/reservations');
-
-    }
-
-    
-
+	
 	public function index() {
 
 		#echo "c_reservations index method called<br><br>";
@@ -69,7 +43,7 @@ class reservations_controller extends base_controller {
 		. $vacancy[1]['vacancy'] . " female beds and " 
 		. $vacancy[2]['vacancy'] . " male beds remaining." 
 		;
-
+		
 	    # Pass data to the View
 	    $this->template->content->guests = $guests;
 	
@@ -78,7 +52,71 @@ class reservations_controller extends base_controller {
 
 	}
 	
-		public function all() {
+	
+    public function add($type = 'member') {
+
+        # Setup view
+		if ($type == 'member') {
+			echo 'member';
+			$this->template->content = View::instance('v_reservations_member');
+		} else {
+			echo 'guest';
+			$this->template->content = View::instance('v_reservations_add');
+		}
+		
+        $this->template->title   = "Add Reservation";
+
+        # Render template
+        echo $this->template;
+
+    }
+
+
+    public function p_add() {
+
+        # Insert:  insert('table-name', array from forms post method)
+        # Note didn't have to sanitize $_POST data because the insert method does it for us
+        DB::instance(DB_NAME)->insert('guests', $_POST);
+
+        # redirect to view the list of guests
+		Router::redirect('/reservations');
+
+    }
+	
+	
+	public function p_member($roomid) {
+	
+	
+		echo "Room id:" . $roomid;
+        # Insert:  insert('table-name', array from forms post method)
+        # Note didn't have to sanitize $_POST data because the insert method does it for us
+        DB::instance(DB_NAME)->insert('guests', $_POST);
+
+		# Determine current occupancy of the members room
+		$o = "SELECT
+				rooms.occupancy,
+				FROM rooms
+				WHERE rooms.roomid = '".$roomid."'";	
+	    # Run the occupancy query
+	    $currocc = DB::instance(DB_NAME)->select_rows($o);
+		
+		#$mygender = $_POST['gender'];
+		#$num = $_POST['roomid'];
+		#$myRoom = array("roomid" => $num);
+		#DB::instance(DB_NAME)->update('guests', $myRoom, "WHERE guest_id = '".$guest['guest_id']."'");
+		# Adjust up room occupancy
+		$newocc = $currocc['occupancy'] + 1;
+		$myocc = array("occupancy" => $newocc);
+		DB::instance(DB_NAME)->update('rooms', $myocc, "WHERE roomid = '".$roomid."'");
+		
+		
+        # redirect to view the list of guests
+		Router::redirect('/reservations');
+
+    }
+
+    
+	public function all() {
 
 	    # Set up the View
 	    $this->template->content = View::instance('v_reservations_index');
@@ -126,47 +164,73 @@ class reservations_controller extends base_controller {
 
 	}
 	
-		public function p_assign() {
+	
+	public function p_assign() {
 		
 	    # Set up the View
 	    $this->template->content = View::instance('v_reservations_index');
 	    $this->template->title   = "All guests";
+		
+		
+		# Clear the room occupancy data
+		#$myocc = array("occupancy" => 0);
+		#DB::instance(DB_NAME)->update('rooms', $myocc, "WHERE 1");
 		
 	    # Build the query
 	    $q = 'SELECT 
 				guests.guest_id,
 	            guests.guestname,
 				guests.gender,
-				guests.roomid
+				guests.roomid,
+				guests.ismember
 	        FROM guests
 			WHERE guests.roomid is NULL';
+			#ORDER BY guests.ismember DESC';
 
 	    # Run the query
 	    $guests = DB::instance(DB_NAME)->select_rows($q);
 				
 		# Assign rooms to guests
 		foreach ($guests as $guest) {
-			$mygender = $guest['gender'];
-			$r = "SELECT 
-				rooms.roomid,
-	            rooms.gender,
-				rooms.fillorder,
-				rooms.capacity,
-				rooms.occupancy
-				FROM rooms
-				WHERE gender = '".$mygender."'
-				and occupancy != capacity";
-			$rooms = DB::instance(DB_NAME)->select_rows($r);
-			$roomarray = array_pop($rooms);
-			$num = $roomarray['roomid'];		
-			$myRoom = array("roomid" => $num);
-			DB::instance(DB_NAME)->update('guests', $myRoom, "WHERE guest_id = '".$guest['guest_id']."'");
+			#print_r($guest);
+			#if (!$guest['ismember']) {
+				# if guest is not a member, select a room
+				$mygender = $guest['gender'];
+				$r = "SELECT 
+					rooms.roomid,
+					rooms.gender,
+					rooms.fillorder,
+					rooms.capacity,
+					rooms.occupancy
+					FROM rooms
+					WHERE gender = '".$mygender."'
+					and occupancy != capacity
+					ORDER BY rooms.fillorder DESC";
+				$rooms = DB::instance(DB_NAME)->select_rows($r);
+				$roomarray = array_pop($rooms);
+				$num = $roomarray['roomid'];
+				$myRoom = array("roomid" => $num);
+				DB::instance(DB_NAME)->update('guests', $myRoom, "WHERE guest_id = '".$guest['guest_id']."'");
 			
-			# Adjust up room occupancy
-			$newocc = $roomarray['occupancy'] + 1;
-			$myocc = array("occupancy" => $newocc);
-			DB::instance(DB_NAME)->update('rooms', $myocc, "WHERE roomid = '".$num."'");	
-		}
+				# Adjust up room occupancy
+				$newocc = $roomarray['occupancy'] + 1;
+				$myocc = array("occupancy" => $newocc);
+				DB::instance(DB_NAME)->update('rooms', $myocc, "WHERE roomid = '".$num."'");
+			/*
+				#} else {
+				# if guest is a member just adjust up room occupancy
+				$r = "SELECT
+					rooms.occupancy
+					from rooms
+					WHERE rooms.roomid = '".$guest['roomid']."'";
+				$rooms = DB::instance(DB_NAME)->select_rows($r);
+				$newocc = $rooms['occupancy'] + 1;
+				$myocc = array("occupancy" => $newocc);
+				DB::instance(DB_NAME)->update('rooms', $myocc, "WHERE roomid = '".$guest['roomid']."'");
+			*/
+			}
+			
+		#}
 		
 		# re-build the query
 	    $q = 'SELECT 

@@ -7,6 +7,12 @@
 	<input type='text' name='last_name'>
 	<br><br>
 	
+	<label for='gender'>Male or Female</label>
+	<select name='gender'>
+		<option>M</option>
+		<option>F</option>
+	</select><br><br>
+	
 	Email<br>
 	<input type='text' name='email'>
 	<br><br>

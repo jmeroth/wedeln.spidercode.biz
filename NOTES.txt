@@ -60,6 +60,10 @@ C:\xampp\htdocs
 			v_users_signup.php
 			v_users_login.php
 			v_index_index.php		--uses the _v_template view
+			v_links.php
+			v_reservations_index.php
+			v_reservations_add.php
+			v_reservations_member.php
 
 
 

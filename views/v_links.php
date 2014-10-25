@@ -1,4 +1,4 @@
-<h1>Useful links:</h1>
+<h2>Useful links:</h2>
 
 <section class='activities'>
 	<ul>

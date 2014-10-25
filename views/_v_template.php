@@ -24,10 +24,11 @@
 			<li class='active'><a href='/links'>Links</a></li>
 			<!-- Menu for users who are logged in -->
 			<?php if($user): ?>
-				<li><a href='/users/logout'>Logout</a></li>
 				<li><a href='/users/profile'>Profile</a></li>
-				<li><a href='/reservations/add'>Add guest</a></li>
+				<li><a href='/reservations/add/member'>Reserve member</a></li>
+				<li><a href='/reservations/add/guest'>Add guest</a></li>
 				<li><a href='/reservations/all'>View guests</a></li>
+				<li><a href='/users/logout'>Logout</a></li>
 				<?php if($user->role == 'vp'): ?>			
 					<li><a href='/users/signup'>Sign up new member</a></li>
 				<?php endif; ?>
