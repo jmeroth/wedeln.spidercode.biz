@@ -147,7 +147,14 @@ class reservations_controller extends base_controller {
 				FROM rooms
 				GROUP BY rooms.gender';
 				
-	    # Run the vacancy query
+	    # Pass data to the View
+	    $this->template->content->guests = $guests;
+
+	    # Render the View
+	    echo $this->template;	    
+		
+		
+		# Run the vacancy query
 	    $vacancy = DB::instance(DB_NAME)->select_rows($v);
 		echo "Currently: " 
 		. $vacancy[0]['vacancy'] . " undeclared beds, "
@@ -156,13 +163,6 @@ class reservations_controller extends base_controller {
 		;
 		
 		
-	    # Pass data to the View
-	    $this->template->content->guests = $guests;
-
-		
-	    # Render the View
-	    echo $this->template;
-
 	}
 	
 	
