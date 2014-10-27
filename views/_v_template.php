@@ -25,8 +25,8 @@
 			<!-- Menu for users who are logged in -->
 			<?php if($user): ?>
 				<li><a href='/users/profile'>Profile</a></li>
-				<li><a href='/reservations/add/member'>Reserve member</a></li>
-				<li><a href='/reservations/add/guest'>Add guest</a></li>
+				<li><a href='/reservations/member'>Reserve member</a></li>
+				<li><a href='/reservations/guest'>Add guest</a></li>
 				<li><a href='/reservations/all'>View guests</a></li>
 				<li><a href='/users/logout'>Logout</a></li>
 				<?php if($user->role == 'vp'): ?>			
@@ -34,14 +34,12 @@
 				<?php endif; ?>
 			<!-- Menu options for users who are not logged in -->
 			<?php else: ?>
-				<!-- <li><a href='/users/signup'>Sign up</a></li>  moved to logged in menu --> 
 				<li><a href='/users/login'>Log in</a></li>
 			<?php endif; ?>
 			</ul>
 		</div>
 	</nav>
 	<div id='container'>
-		
 		<article class='main'>
 			
 			<section id='content'>
@@ -49,8 +47,7 @@
 				<?php if(isset($client_files_body)) echo $client_files_body; ?>
 			</section>
 		</article>
-		<aside>
-			
+		<aside>		
 			<section class='cat'>
 				<img src='/uploads/avatars/Snowflake.gif' alt='Snowflake'>
 			</section>

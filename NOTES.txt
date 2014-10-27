@@ -55,7 +55,7 @@ C:\xampp\htdocs
 		js/
 		views/
 			_v_email.php
-			_v_template.php			--contains menu items, echos: $content
+			_v_template.php			--contains menu items, echos: $content, snowflake gif
 			v_users_profile.php
 			v_users_signup.php
 			v_users_login.php

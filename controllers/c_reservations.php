@@ -53,26 +53,33 @@ class reservations_controller extends base_controller {
 	}
 	
 	
-    public function add($type = 'member') {
+	public function guest() {
 
         # Setup view
-		if ($type == 'member') {
-			echo 'member';
-			$this->template->content = View::instance('v_reservations_member');
-		} else {
-			echo 'guest';
-			$this->template->content = View::instance('v_reservations_add');
-		}
-		
-        $this->template->title   = "Add Reservation";
+		$this->template->content = View::instance('v_reservations_guest');
+        $this->template->title = "Add Guest";
 
-        # Render template
-        echo $this->template;
+        # Render the view
+			echo $this->template;
 
     }
+	
+	
+    public function member() {
+
+        # Setup view
+		$this->template->content = View::instance('v_reservations_member');
+        $this->template->title = "Add Member";	
+				
 
 
-    public function p_add() {
+        # Render the view
+			echo $this->template;
+
+    }
+	
+
+    public function p_guest() {
 
         # Insert:  insert('table-name', array from forms post method)
         # Note didn't have to sanitize $_POST data because the insert method does it for us
@@ -86,7 +93,6 @@ class reservations_controller extends base_controller {
 	
 	public function p_member($roomid) {
 	
-	
 		echo "Room id:" . $roomid;
         # Insert:  insert('table-name', array from forms post method)
         # Note didn't have to sanitize $_POST data because the insert method does it for us
@@ -94,24 +100,19 @@ class reservations_controller extends base_controller {
 
 		# Determine current occupancy of the members room
 		$o = "SELECT
-				rooms.occupancy,
+				rooms.occupancy
 				FROM rooms
 				WHERE rooms.roomid = '".$roomid."'";	
 	    # Run the occupancy query
 	    $currocc = DB::instance(DB_NAME)->select_rows($o);
 		
-		#$mygender = $_POST['gender'];
-		#$num = $_POST['roomid'];
-		#$myRoom = array("roomid" => $num);
-		#DB::instance(DB_NAME)->update('guests', $myRoom, "WHERE guest_id = '".$guest['guest_id']."'");
 		# Adjust up room occupancy
 		$newocc = $currocc['occupancy'] + 1;
 		$myocc = array("occupancy" => $newocc);
 		DB::instance(DB_NAME)->update('rooms', $myocc, "WHERE roomid = '".$roomid."'");
-		
-		
+			
         # redirect to view the list of guests
-		Router::redirect('/reservations');
+		Router::redirect('/reservations/all');
 
     }
 
