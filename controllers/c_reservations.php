@@ -172,7 +172,6 @@ class reservations_controller extends base_controller {
 	    $this->template->content = View::instance('v_reservations_index');
 	    $this->template->title   = "Reservations";
 		
-		
 		# Clear the room occupancy data
 		#$myocc = array("occupancy" => 0);
 		#DB::instance(DB_NAME)->update('rooms', $myocc, "WHERE 1");
@@ -186,53 +185,35 @@ class reservations_controller extends base_controller {
 				guests.ismember
 	        FROM guests
 			WHERE guests.roomid is NULL';
-			#ORDER BY guests.ismember DESC';
 
 	    # Run the query
 	    $guests = DB::instance(DB_NAME)->select_rows($q);
 				
 		# Assign rooms to guests
 		foreach ($guests as $guest) {
-			#print_r($guest);
-			#if (!$guest['ismember']) {
-				# if guest is not a member, select a room
-				$mygender = $guest['gender'];
-				$r = "SELECT 
-					rooms.roomid,
-					rooms.gender,
-					rooms.fillorder,
-					rooms.capacity,
-					rooms.occupancy
-					FROM rooms
-					WHERE gender = '".$mygender."'
-					and occupancy != capacity
-					ORDER BY rooms.fillorder DESC";
-				$rooms = DB::instance(DB_NAME)->select_rows($r);
-				$roomarray = array_pop($rooms);
-				$num = $roomarray['roomid'];
-				$myRoom = array("roomid" => $num);
-				DB::instance(DB_NAME)->update('guests', $myRoom, "WHERE guest_id = '".$guest['guest_id']."'");
-			
-				# Adjust up room occupancy
-				$newocc = $roomarray['occupancy'] + 1;
-				$myocc = array("occupancy" => $newocc);
-				DB::instance(DB_NAME)->update('rooms', $myocc, "WHERE roomid = '".$num."'");
-			/*
-				#} else {
-				# if guest is a member just adjust up room occupancy
-				$r = "SELECT
-					rooms.occupancy
-					from rooms
-					WHERE rooms.roomid = '".$guest['roomid']."'";
-				$rooms = DB::instance(DB_NAME)->select_rows($r);
-				$newocc = $rooms['occupancy'] + 1;
-				$myocc = array("occupancy" => $newocc);
-				DB::instance(DB_NAME)->update('rooms', $myocc, "WHERE roomid = '".$guest['roomid']."'");
-			*/
-			}
-			
-		#}
+			$mygender = $guest['gender'];
+			$r = "SELECT 
+				rooms.roomid,
+				rooms.gender,
+				rooms.fillorder,
+				rooms.capacity,
+				rooms.occupancy
+				FROM rooms
+				WHERE gender = '".$mygender."'
+				and occupancy != capacity
+				ORDER BY rooms.fillorder DESC";
+			$rooms = DB::instance(DB_NAME)->select_rows($r);
+			$roomarray = array_pop($rooms);
+			$num = $roomarray['roomid'];
+			$myRoom = array("roomid" => $num);
+			DB::instance(DB_NAME)->update('guests', $myRoom, "WHERE guest_id = '".$guest['guest_id']."'");
 		
+			# Adjust up room occupancy
+			$newocc = $roomarray['occupancy'] + 1;
+			$myocc = array("occupancy" => $newocc);
+			DB::instance(DB_NAME)->update('rooms', $myocc, "WHERE roomid = '".$num."'");
+		}
+			
 		# re-build the query
 	    $q = 'SELECT 
 				guests.guest_id,
@@ -247,14 +228,12 @@ class reservations_controller extends base_controller {
 	    # Pass data to the View
 	    $this->template->content->guests = $guests;
 
-	
 	    # Render the View
-	    echo $this->template;
+	    #echo $this->template;
 		
 		# redirect to view the list of guests
 		Router::redirect("/reservations/all");
 		
-
 	}
 
 
