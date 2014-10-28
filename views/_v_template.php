@@ -25,8 +25,8 @@
 			<!-- Menu for users who are logged in -->
 			<?php if($user): ?>
 				<li><a href='/users/profile'>Profile</a></li>
-				<li><a href='/reservations/member'>Reserve member</a></li>
-				<li><a href='/reservations/guest'>Add guest</a></li>
+				<li><a href='/reservations/member'>Reserve yourself</a></li>
+				<li><a href='/reservations/guest'>Add a guest</a></li>
 				<li><a href='/reservations/all'>View guests</a></li>
 				<li><a href='/users/logout'>Logout</a></li>
 				<?php if($user->role == 'vp'): ?>			

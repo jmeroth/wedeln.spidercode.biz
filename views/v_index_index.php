@@ -1,5 +1,5 @@
 <h2>Welcome to <?=APP_NAME?><?php if($user) echo ', '.$user->first_name; ?></h2>
-<p>Welcome To Wedeln! Wedeln Ski & Outdoors Club is an active four-season club located in New Hampshire's Mt. Washington Valley.</p>
+<p>Wedeln Ski & Outdoors Club is an active four-season club located in New Hampshire's Mt. Washington Valley.</p>
 
 <!--
 <p>This message is being triggered via the c_index.php controller, within the index() method.</p>

@@ -50,10 +50,10 @@ class users_controller extends base_controller {
 		$from = Array("name" => APP_NAME, "email" => APP_EMAIL);
 
 			# Subject
-		$subject = "Welcome to LocalTunes";
+		$subject = "Welcome to WERESERVE";
 
 			# You can set the body as just a string of text
-		$body = "This is just a message to confirm your registration at p2.spidercode.biz";
+		$body = "This is just a message to confirm your registration at p3.spidercode.biz";
 
 			# if email is complex and involves HTML/CSS, you can build the body via a View like we do in our controllers
 			# $body = View::instance('e_users_welcome');
@@ -167,7 +167,7 @@ class users_controller extends base_controller {
 
     	# Setup view
 		$this->template->content = View::instance('v_users_profile');
-		$this->template->title = "Profile of".$this->user->first_name;
+		$this->template->title = "Profile of ".$this->user->first_name;
 
     	# Create an array of 1 or many client files to be included in the head
     	$client_files_head = Array(

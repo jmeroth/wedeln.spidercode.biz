@@ -17,7 +17,7 @@ class reservations_controller extends base_controller {
 
 	    # Set up the View
 	    $this->template->content = View::instance('v_reservations_index');
-	    $this->template->title   = "Guests to book";
+	    $this->template->title   = "Reservations";
 
 	    # Build the guest query
 	    $q = 'SELECT 
@@ -35,6 +35,12 @@ class reservations_controller extends base_controller {
 				sum(rooms.capacity - rooms.occupancy) as vacancy
 				FROM rooms
 				GROUP BY rooms.gender';
+
+	    # Pass data to the View
+	    $this->template->content->guests = $guests;
+	
+	    # Render the View
+	    echo $this->template;
 				
 	    # Run the vacancy query
 	    $vacancy = DB::instance(DB_NAME)->select_rows($v);
@@ -44,12 +50,6 @@ class reservations_controller extends base_controller {
 		. $vacancy[2]['vacancy'] . " male beds remaining." 
 		;
 		
-	    # Pass data to the View
-	    $this->template->content->guests = $guests;
-	
-	    # Render the View
-	    echo $this->template;
-
 	}
 	
 	
@@ -86,7 +86,7 @@ class reservations_controller extends base_controller {
         DB::instance(DB_NAME)->insert('guests', $_POST);
 
         # redirect to view the list of guests
-		Router::redirect('/reservations');
+		Router::redirect('/reservations/all');
 
     }
 	
@@ -121,7 +121,7 @@ class reservations_controller extends base_controller {
 
 	    # Set up the View
 	    $this->template->content = View::instance('v_reservations_index');
-	    $this->template->title   = "Guests to book";
+	    $this->template->title   = "Reservations";
 
 	    # Build the guest query
 		# Define the WHERE clause, if vp show all guests.
@@ -170,7 +170,7 @@ class reservations_controller extends base_controller {
 		
 	    # Set up the View
 	    $this->template->content = View::instance('v_reservations_index');
-	    $this->template->title   = "All guests";
+	    $this->template->title   = "Reservations";
 		
 		
 		# Clear the room occupancy data
@@ -252,7 +252,7 @@ class reservations_controller extends base_controller {
 	    echo $this->template;
 		
 		# redirect to view the list of guests
-		Router::redirect("/reservations");
+		Router::redirect("/reservations/all");
 		
 
 	}

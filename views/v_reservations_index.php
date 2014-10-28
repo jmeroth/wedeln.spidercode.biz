@@ -20,7 +20,7 @@
 <?php if($user->role == 'vp'): ?>	
 	<form method='POST' action='/reservations/p_assign'>
 		<tr>
-			<td></td><td></t><td><input type='submit' value='Assign room now!'></td>
+			<td></td><td></t><td><input type='submit' value='Assign rooms'></td>
 		</tr>
 	</form>
 <?php endif; ?>
