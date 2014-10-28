@@ -13,8 +13,6 @@ class reservations_controller extends base_controller {
 	
 	public function index() {
 
-		#echo "c_reservations index method called<br><br>";
-
 	    # Set up the View
 	    $this->template->content = View::instance('v_reservations_index');
 	    $this->template->title   = "Reservations";
@@ -41,14 +39,6 @@ class reservations_controller extends base_controller {
 	
 	    # Render the View
 	    echo $this->template;
-				
-	    # Run the vacancy query
-	    $vacancy = DB::instance(DB_NAME)->select_rows($v);
-		echo "There are currently " 
-		. $vacancy[0]['vacancy'] . " undeclared beds, " 
-		. $vacancy[1]['vacancy'] . " female beds and " 
-		. $vacancy[2]['vacancy'] . " male beds remaining." 
-		;
 		
 	}
 	
@@ -71,8 +61,6 @@ class reservations_controller extends base_controller {
 		$this->template->content = View::instance('v_reservations_member');
         $this->template->title = "Add Member";	
 				
-
-
         # Render the view
 			echo $this->template;
 
@@ -124,7 +112,7 @@ class reservations_controller extends base_controller {
 	    $this->template->title   = "Reservations";
 
 	    # Build the guest query
-		# Define the WHERE clause, if vp show all guests.
+		# Define the WHERE clause.  if vp, show all guests.
 		if ($this->user->role == 'vp') {
 			$clause=" WHERE 1";
 		} else {
@@ -152,16 +140,15 @@ class reservations_controller extends base_controller {
 
 	    # Render the View
 	    echo $this->template;	    
-		
-		
+			
 		# Run the vacancy query
 	    $vacancy = DB::instance(DB_NAME)->select_rows($v);
-		echo "Currently: " 
-		. $vacancy[0]['vacancy'] . " undeclared beds, "
-		. $vacancy[1]['vacancy'] . " female beds and " 
-		. $vacancy[2]['vacancy'] . " male beds remaining." 
+		$message = "Beds remaining: <b>" 
+		. $vacancy[0]['vacancy'] . "</b> undeclared, <b>"
+		. $vacancy[1]['vacancy'] . "</b> female and <b>" 
+		. $vacancy[2]['vacancy'] . "</b> male."
 		;
-		
+		echo $message;
 		
 	}
 	
@@ -213,23 +200,6 @@ class reservations_controller extends base_controller {
 			$myocc = array("occupancy" => $newocc);
 			DB::instance(DB_NAME)->update('rooms', $myocc, "WHERE roomid = '".$num."'");
 		}
-			
-		# re-build the query
-	    $q = 'SELECT 
-				guests.guest_id,
-	            guests.guestname,
-				guests.gender,
-				guests.roomid
-	        FROM guests
-			WHERE guests.roomid is NULL';
-
-	    # Re-run the query
-	    $guests = DB::instance(DB_NAME)->select_rows($q);
-	    # Pass data to the View
-	    $this->template->content->guests = $guests;
-
-	    # Render the View
-	    #echo $this->template;
 		
 		# redirect to view the list of guests
 		Router::redirect("/reservations/all");

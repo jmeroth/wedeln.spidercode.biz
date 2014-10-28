@@ -42,11 +42,21 @@ blockquote,
 q {
     quotes: none
 }
+
 table {
     border-collapse: collapse;
     border-spacing: 0;
     border-radius: 5px;
+	color: white;
+	background-color: #8800FF;
 }
+table th, table tf {
+	background-color: grey;
+	}
+td, th{
+	padding: 0px 0px 0px 20px;
+	}
+
 :focus {
     outline: none
 }

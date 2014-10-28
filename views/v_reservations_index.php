@@ -2,8 +2,9 @@
     RULES=ROWS FRAME=HSIDES>
 	<tr>
 		<th>Name</th>
-		<th>Sex</th>
+		<th>Gender</th>
 		<th>Room</th>
+		<th></th>
 	<tr/>
 <?php foreach($guests as $guest): ?>
 <form method='POST' action='/reservations/p_remove/<?=$guest['guest_id']?>'>
@@ -19,8 +20,8 @@
 
 <?php if($user->role == 'vp'): ?>	
 	<form method='POST' action='/reservations/p_assign'>
-		<tr>
-			<td></td><td></t><td><input type='submit' value='Assign rooms'></td>
+		<tr style="background-color: grey">
+			<td></td><td></td><td><input type='submit' value='Assign rooms'></td><td></td>
 		</tr>
 	</form>
 <?php endif; ?>
