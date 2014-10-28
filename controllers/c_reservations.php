@@ -93,7 +93,7 @@ class reservations_controller extends base_controller {
 	
 	public function p_member($roomid) {
 	
-		echo "Room id:" . $roomid;
+		#echo "Room id:" . $roomid;
         # Insert:  insert('table-name', array from forms post method)
         # Note didn't have to sanitize $_POST data because the insert method does it for us
         DB::instance(DB_NAME)->insert('guests', $_POST);
