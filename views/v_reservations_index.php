@@ -20,7 +20,7 @@
 
 <?php if($user->role == 'vp'): ?>	
 	<form method='POST' action='/reservations/p_assign'>
-		<tr style="background-color: grey">
+		<tr style="background-color: #9D0000">
 			<td></td><td></td><td><input type='submit' value='Assign rooms'></td><td></td>
 		</tr>
 	</form>

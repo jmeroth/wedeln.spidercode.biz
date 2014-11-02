@@ -31,6 +31,7 @@
 				<li><a href='/users/logout'>Logout</a></li>
 				<?php if($user->role == 'vp'): ?>			
 					<li><a href='/users/signup'>Sign up new member</a></li>
+					<li><a href='/api/display'>api data</a></li>
 				<?php endif; ?>
 			<!-- Menu options for users who are not logged in -->
 			<?php else: ?>
@@ -39,20 +40,33 @@
 			</ul>
 		</div>
 	</nav>
+	<header role="banner">
+        <div class="inner">
+           <h1 class="logo"><a href="#"><img src='/uploads/WelcomeWedeln.JPG' alt='Welcome picture'></a></h1>
+        </div><!-- /.inner -->
+     </header>
 	<div id='container'>
 		<article class='main'>
-			
 			<section id='content'>
+				
 				<?php if(isset($content)) echo $content; ?>
 				<?php if(isset($client_files_body)) echo $client_files_body; ?>
 			</section>
 		</article>
 		<aside>		
-			<section class='cat'>
-				<img src='/uploads/avatars/Snowflake.gif' alt='Snowflake'>
+			<section class='related'>
+				<ul>
+					<img src='/uploads/reservations.JPG' alt='reservations'>
+					<img src='/uploads/avatars/Snowflake.gif' alt='Snowflake'>
+					<img src='/uploads/avatars/Snowflake.gif' alt='Snowflake'>
+					<img src='/uploads/avatars/Snowflake.gif' alt='Snowflake'>
+					<img src='/uploads/avatars/Snowflake.gif' alt='Snowflake'>
+					<img src='/uploads/avatars/Snowflake.gif' alt='Snowflake'>
+				</ul>
 			</section>
 			<section class='banner'>
-				<h2></h2>
+				<h2>Think snow!</h2>
+				<img src='/uploads/avatars/Snowflake.gif' alt='Snowflake'>
 			</section>
 		</aside>
 	</div><!-- /#container -->

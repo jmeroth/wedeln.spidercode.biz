@@ -20,12 +20,10 @@ time, mark, audio, video {
   -mox-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-}
-
+}             
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section{ 
     display:block;
 }
-
 blockquote:before,
 blockquote:after,
 q:before,
@@ -33,39 +31,25 @@ q:after {
     content: '';
     content: none;
 }
-
 a:hover {
     text-decoration: underline
 }
-
 ol,
 ul {
     list-style: none
 }
-
 blockquote,
 q {
     quotes: none
 }
-
 table {
     border-collapse: collapse;
     border-spacing: 0;
     border-radius: 5px;
-	color: white;
-	background-color: #3300FF;
 }
-table th, table tf {
-	background-color: #9D0000;
-	}
-td, th{
-	padding: 0px 0px 0px 20px;
-	}
-
 :focus {
     outline: none
 }
-
 /* Typography */
 h1 {
     font-family: 'ChunkFiveRegular', Georgia, serif;
@@ -82,7 +66,7 @@ h1 img{
 }
 
 h2 {
-    /*border-bottom: 2px solid #dbdbdb;    --line beneath h2 elements  */
+    border-bottom: 2px solid #dbdbdb;
     font-family: 'ChunkFiveRegular', Georgia, serif;
     font-size: 1.5em; /* 24px/16px */
     line-height: 1em;
@@ -106,11 +90,9 @@ blockquote:before {
     left: -.4em;
     position: relative;
 }
-
 aside section {
     overflow: hidden
 }
-
 a:hover {
     text-decoration: underline
 }
@@ -120,12 +102,10 @@ cite {
     font-style: normal;
     text-align: right;
 }
-
 a {
     color: rgb(157,0,0);
     text-decoration: none;
 }
-
 /*
  * Base styles
  * --------------------------------------------------*/
@@ -154,26 +134,21 @@ header{
     
 }
 
-.main {
-	display: table-cell;
-	padding-right: 2.5316456%  /*  24px / 948px  */
-}
 
-.main img,
-.slats img{
-	width: 100%;
-	max-width: 100%;
-}
-
-aside img{
-	max-width: 100%;
-}
+	.main img,
+	.slats img{
+		width: 100%;
+		max-width: 100%;
+	}
+	aside img{
+		max-width: 100%;
+	}
 ul.tags li {
     float: left;
     font-size: 14px;
     margin: 0 5px 5px 0;
 }
-	ul.tags li a {
+    ul.tags li a {
         -moz-border-radius: 0px 3px 3px 0px;
         -moz-transition: background-color .2s ease-in-out;
         -webkit-border-radius: 0px 3px 3px 0px;
@@ -218,7 +193,6 @@ ul.tags li {
     width: 95%;
 	padding: 0 1.0548523%;
 }
-
 
 /*
  * Nav
@@ -372,7 +346,6 @@ nav[role="navigation"] ul.hide{
 	} 
 	
 }
-
 /* 860px */
 @media all and (min-width: 53.75em) {
 	aside{
@@ -380,15 +353,14 @@ nav[role="navigation"] ul.hide{
 		margin-bottom: 1em;
 		padding: 0 1%;
 		width: auto;
-		float: right;
 	}
 	
 	aside section{
-        float: right;
+        float: left;
         margin-right: 2%;
         width: 48%;
 	}
-	header[role="banner"] .inner{
+	header[role=banner] .inner{
 		background: url('../images/football_bg.png') bottom right no-repeat;
 	}
 	nav[role="navigation"] li {
@@ -412,10 +384,9 @@ nav[role="navigation"] ul.hide{
 	aside {
 	    display: table-cell;
 		width: 300px;
-		float: right;
 	}
 	aside section{
-		float: right;
+		float: none;
 		width: 100%;
 	}
 }
@@ -426,12 +397,12 @@ nav[role="navigation"] ul.hide{
 		border: 3px solid #dbdbdb;
 	}
 	.main .articleInfo{
-		border-bottom: 2px solid #dbdbdb;
+	    border-bottom: 2px solid #dbdbdb;
 	}
 	.main section{
-		-moz-column-count: 1; /* Firefox */
-		-webkit-column-count: 1; /* Safari, Chrome */
-		column-count: 1;
+		-moz-column-count: 2; /* Firefox */
+		-webkit-column-count: 2; /* Safari, Chrome */
+		column-count: 2;
 		-moz-column-gap: 1.5em; /* Firefox */
 		-webkit-column-gap: 1.5em; /* Safari, Chrome */
 		column-gap: 1.5em;
@@ -439,5 +410,4 @@ nav[role="navigation"] ul.hide{
 		-webkit-column-rule: 1px dotted #ccc; /* Safari, Chrome */
 		column-rule: 1px dotted #ccc;
 	}
-
 }

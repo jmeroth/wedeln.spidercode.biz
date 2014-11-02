@@ -1,5 +1,10 @@
-<h2>Welcome to <?=APP_NAME?><?php if($user) echo ', '.$user->first_name; ?></h2>
-<p>Wedeln Ski & Outdoors Club is an active four-season club located in New Hampshire's Mt. Washington Valley.</p>
+<h2>Welcome<?php if($user) echo ', '.$user->first_name; ?></h2>
+
+<p>Wedeln Ski & Outdoors Club is an active, four-season club located in New Hampshire's Mount Washington Valley
+ in Barlett, NH next to North Conway. Wedeln is near many ski resorts which have excellent terrain for skiing,
+ snowboarding and cross country skiing. We are much more than a ski club: throughout the year, we and our guests
+ participate in a variety of organized activities and social events offered both through the club and via our
+ affiliation with the Eastern Inter-Club Ski League (EICSL).</p>
 
 <!--
 <p>This message is being triggered via the c_index.php controller, within the index() method.</p>

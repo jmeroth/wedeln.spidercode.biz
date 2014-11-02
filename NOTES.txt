@@ -49,6 +49,8 @@ C:\xampp\htdocs
 				p_login()  			--  redirect("/users/login/<email or password>_error") OR ("/")
 				logout()  			--  redirect("/")
 				profile()  			--  v_users_profile  --  redirect('/users/login')
+			c_api.php
+				index				-- serves guest list for api
 
 		css/
 			app.css
