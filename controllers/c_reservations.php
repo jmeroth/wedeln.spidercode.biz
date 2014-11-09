@@ -188,7 +188,7 @@ class reservations_controller extends base_controller {
 				FROM rooms
 				WHERE gender = '".$mygender."'
 				and occupancy != capacity
-				ORDER BY rooms.fillorder DESC";
+				ORDER BY rooms.fillorder + (1/(capacity-occupancy)) DESC";
 			$rooms = DB::instance(DB_NAME)->select_rows($r);
 			$roomarray = array_pop($rooms);
 			$num = $roomarray['roomid'];

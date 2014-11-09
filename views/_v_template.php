@@ -5,7 +5,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />	
 
 	<!-- Common CSS/JSS -->
-    <link rel="stylesheet" href="/css/app.css" type="text/css">
+    <link rel="stylesheet" href="/css/app2.css" type="text/css">
 	
     <!-- Common JSS 
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -24,18 +24,18 @@
 			<li class='active'><a href='/links'>Links</a></li>
 			<!-- Menu for users who are logged in -->
 			<?php if($user): ?>
-				<li><a href='/users/profile'>Profile</a></li>
-				<li><a href='/reservations/member'>Reserve yourself</a></li>
-				<li><a href='/reservations/guest'>Add a guest</a></li>
-				<li><a href='/reservations/all'>View guests</a></li>
-				<li><a href='/users/logout'>Logout</a></li>
+				<li class='active'><a href='/users/profile'>Profile</a></li>
+				<li class='active'><a href='/reservations/member'>Reserve yourself</a></li>
+				<li class='active'><a href='/reservations/guest'>Add a guest</a></li>
+				<li class='active'><a href='/reservations/all'>View guests</a></li>
+				<li class='active'><a href='/users/logout'>Logout</a></li>
 				<?php if($user->role == 'vp'): ?>			
-					<li><a href='/users/signup'>Sign up new member</a></li>
-					<li><a href='/api/display'>api data</a></li>
+					<li class='active'><a href='/users/signup'>Sign up new member</a></li>
+					<li class='active'><a href='/api/display'>api data</a></li>
 				<?php endif; ?>
 			<!-- Menu options for users who are not logged in -->
 			<?php else: ?>
-				<li><a href='/users/login'>Log in</a></li>
+				<li class='active'><a href='/users/login'>LOGIN</a></li>
 			<?php endif; ?>
 			</ul>
 		</div>
@@ -45,31 +45,14 @@
            <h1 class="logo"><a href="#"><img src='/uploads/WelcomeWedeln.JPG' alt='Welcome picture'></a></h1>
         </div><!-- /.inner -->
      </header>
-	<div id='container'>
-		<article class='main'>
-			<section id='content'>
+
+		<div id='container'>
 				
 				<?php if(isset($content)) echo $content; ?>
 				<?php if(isset($client_files_body)) echo $client_files_body; ?>
-			</section>
-		</article>
-		<aside>		
-			<section class='related'>
-				<ul>
-					<img src='/uploads/reservations.JPG' alt='reservations'>
-					<img src='/uploads/avatars/Snowflake.gif' alt='Snowflake'>
-					<img src='/uploads/avatars/Snowflake.gif' alt='Snowflake'>
-					<img src='/uploads/avatars/Snowflake.gif' alt='Snowflake'>
-					<img src='/uploads/avatars/Snowflake.gif' alt='Snowflake'>
-					<img src='/uploads/avatars/Snowflake.gif' alt='Snowflake'>
-				</ul>
-			</section>
-			<section class='banner'>
-				<h2>Think snow!</h2>
-				<img src='/uploads/avatars/Snowflake.gif' alt='Snowflake'>
-			</section>
-		</aside>
-	</div><!-- /#container -->
+			
+		</div><!-- /#container -->
+
 	<script type="text/javascript" src="/js/yass.js"></script>
 </body>
 </html>

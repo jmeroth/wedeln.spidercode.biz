@@ -28,6 +28,8 @@
 
 </table>
 
+
+
 <!--  Display Room info 
       Would need to query room data and send it to the View using:
 		$this->template->content->rooms = $rooms;
