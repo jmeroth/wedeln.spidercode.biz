@@ -22,6 +22,7 @@
 			<ul class='nav' id='nav'>
 			<li class='active'><a href='/'>Home</a></li>
 			<li class='active'><a href='/links'>Links</a></li>
+			<li class='active'><a href='/api/weather'>Weather</a></li>
 			<!-- Menu for users who are logged in -->
 			<?php if($user): ?>
 				<li class='active'><a href='/users/profile'>Profile</a></li>
