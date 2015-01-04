@@ -1,4 +1,5 @@
-p3.spidercode.biz
+wedeln.spidercode.biz
 =================
 
-Project 3
+Began as Project 3 from Dynamic Web Applications,
+now serves as a model for a club reservation site.
