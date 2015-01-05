@@ -31,7 +31,7 @@ A email designated to receive messages from the server. Examples:
 	define('SYSTEM_EMAIL', 'spider_is_in@yahoo.com'); 
 
 # Default DB name for this app
-	define('DB_NAME', 'spiderco_wedeln'); 
+	define('DB_NAME', 'spiderco_p3_spidercode_biz'); 
 
 # Timezone
 	define('TIMEZONE', 'America/New_York');
