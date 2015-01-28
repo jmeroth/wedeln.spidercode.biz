@@ -2,17 +2,15 @@
 
 class api_controller extends base_controller {
 	
-	/*-------------------------------------------------------------------------------------------------
 
-	-------------------------------------------------------------------------------------------------*/
 	public function __construct() {
 		parent::__construct();
 	} 
-		
-	/*-------------------------------------------------------------------------------------------------
-	Accessed via http://localhost/api/index/	This class echos guest data in json to serve an api call
-	-------------------------------------------------------------------------------------------------*/
 
+
+	/*-------------------------------------------------------------------------------------------------
+	Accessed via http://localhost/api/index/	index() echos data from 'guests' table to serve an api call
+	-------------------------------------------------------------------------------------------------*/
 	public function index() {
 		
 		header("Content-Type:application/json");
@@ -60,8 +58,7 @@ class api_controller extends base_controller {
 	
 	
 	/*-------------------------------------------------------------------------------------------------
-	Accessed via http://localhost/api/display/
-	This class calls an external api
+	Accessed via http://localhost/api/display/		This method displays an external api
 	-------------------------------------------------------------------------------------------------*/
 	public function display() {
 		
@@ -72,6 +69,7 @@ class api_controller extends base_controller {
 		$cobj=curl_init($uri);
 		curl_setopt($cobj,CURLOPT_RETURNTRANSFER,1);
 		$json=curl_exec($cobj);
+
 		echo $json;
 		$data = json_decode($json);
 		foreach ($data as $element => $value) {
@@ -82,9 +80,9 @@ class api_controller extends base_controller {
 		}
 		
 		/* Test of Parsing WildApricot json */
-		echo '<br><br>'."WildApricot Test".'<br><br>';
+		echo '<br><br>'."WildApricot file parse Test".'<br><br>';
 		#$jsondata = file_get_contents("C:\\xampp\\htdocs\\p3.spidercode.biz\\controllers\\contacts.json");
-		$jsondata = file_get_contents("C:\\xampp\\htdocs\\p3.spidercode.biz\\controllers\\registrants.json");
+		$jsondata = file_get_contents("C:\\xampp\\htdocs\\wedeln.spidercode.biz\\controllers\\registrants.json");
 		$json = json_decode($jsondata, true);
 		$output = "";
 		foreach($json as $member) {
@@ -95,6 +93,10 @@ class api_controller extends base_controller {
 
 	} # End of method
 	
+	
+	/*-------------------------------------------------------------------------------------------------
+	Accessed via http://localhost/api/contacts/		This method displays file "contacts.json"
+	-------------------------------------------------------------------------------------------------*/
 	public function contacts() {
 		
 		/* Test of Parsing WildApricot json */
@@ -112,6 +114,9 @@ class api_controller extends base_controller {
 	} # End of method
 	
 	
+	/*-------------------------------------------------------------------------------------------------
+	Accessed via http://localhost/api/wild/		This method connects to WildApricot
+	-------------------------------------------------------------------------------------------------*/
 	public function wild($user_name = NULL) {
         # If user is blank, they're not logged in; redirect them to the login page
         if(!$this->user) {
@@ -122,34 +127,76 @@ class api_controller extends base_controller {
         $this->template->content = View::instance('v_api_display');
         $this->template->title = "API Display";
  
-        $rs="https://oauth.wildapricot.org/auth/token";  #http://p3.spidercode.biz/api";    # defines the location of the web service data
-        $qs="grant_type=refresh_token&refresh_token=PEgC20Eu8B8lEeicYfUQ3EpUMMQ-";
-        $uri=$rs.'?'.$qs;
+        # Obtain access token using refresh token
+        $uri="https://oauth.wildapricot.org/auth/token";
         $cobj=curl_init($uri);
+		$header = array('Authorization: Basic QVBJS0VZOjRzdmhfcnBmcDFxMzcyMjBna2txdDBuNGFsY2U1MA==', 
+			'Content-Type: application/x-www-form-urlencoded');
+		
         curl_setopt($cobj,CURLOPT_RETURNTRANSFER,1);
+		curl_setopt($cobj,	CURLOPT_HTTPHEADER, $header);
 		curl_setopt($cobj,CURLOPT_POST,1);
-		#curl_setopt($cobj,CURLOPT_POSTFIELDS,"grant_type=refresh_token&refresh_token=ZSh7p0gJqc540rPejRIYfswntx8-");
+		curl_setopt($cobj,CURLOPT_POSTFIELDS,"grant_type=refresh_token&refresh_token=s9Nud54EleyLth-0L4NvEliphyo-");
+		curl_setopt($cobj, CURLOPT_SSL_VERIFYPEER, FALSE);
+		curl_setopt($cobj, CURLOPT_SSL_VERIFYHOST, 2);
+		
         $json=curl_exec($cobj);
-		echo $json;
-		print_r($json);
 		curl_close($cobj);
-        $data = json_decode($json);
-        #foreach ($data as $element => $value) {
-        #     echo $element.'<br>';
-        #     foreach ($value as $item) {
-        #         echo $item.' ';
-        #     }
-        #}
-		echo $data;
-        print_r($data);
-        #$guestname = $data[0]->{'guestname'};
-		$guestname = $data;
-		# Pass information to the view fragment
-        $this->template->content->guestname = $guestname;
+		$data = json_decode($json);
 
-        # Render View
+		$accessToken = $data->{'access_token'};
+		
+		
+		#############################################################################
+		
+		# get request for list of registrants
+		$rs="https://api.wildapricot.org/v2/accounts/178224/EventRegistrations/";      # url and path
+        $qs="eventId=1819786";
+        $uri=$rs.'?'.$qs;
+		$cobj=curl_init($uri);
+        
+		$header = array('Authorization: Bearer '.$accessToken);
+
+		curl_setopt($cobj,CURLOPT_RETURNTRANSFER,1);
+		curl_setopt($cobj,	CURLOPT_HTTPHEADER, $header);
+		curl_setopt($cobj, CURLOPT_SSL_VERIFYPEER, FALSE);
+		curl_setopt($cobj, CURLOPT_SSL_VERIFYHOST, 2);
+        $json=curl_exec($cobj);
+		curl_close($cobj);
+		#echo $json;
+		#print_r($json);
+		
+        $data = json_decode($json, true);
+		
+		
+		#print_r($data);
+		
+		$output = "";
+		foreach($data as $member) {
+			$output .= "<em>".$member["Contact"]["Name"]."<br></em>";
+		}
+		#echo $output;
+		#echo '<br><br>';
+		
+		
+
+		$guestname = $output;
+        #$guestname = $data[0]->{'guestname'};
+		#$guestname = $data;
+		# Pass information to the view fragment
+		
+		#############################################################################
+		
+		
+		
+		$this->template->content->guestname = $guestname;
+		
+		# Render View
         echo $this->template;
+		
     }
+	
+	
 	
 	
 } # End of class

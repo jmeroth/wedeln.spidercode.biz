@@ -1,2 +1,2 @@
-<h2>Data from curl response: </h2><h1><?=$guestname?></h1>
+<h2>Membership registered: </h2><?=$guestname?>
 

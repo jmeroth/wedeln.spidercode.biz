@@ -32,7 +32,7 @@
 				<li class='active'><a href='/users/logout'>Logout</a></li>
 				<?php if($user->role == 'vp'): ?>			
 					<li class='active'><a href='/users/signup'>Sign up new member</a></li>
-					<li class='active'><a href='/api/display'>api data</a></li>
+					<li class='active'><a href='/api/wild'>api data</a></li>
 				<?php endif; ?>
 			<!-- Menu options for users who are not logged in -->
 			<?php else: ?>
