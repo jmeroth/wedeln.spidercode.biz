@@ -1,5 +1,5 @@
 /* Wereserve
-   p3.spidercode.biz
+   wedeln.spidercode.biz
 */
 C:\xampp\apache\conf
 	httpd.conf				--determine document root for localhost (which app will run)
@@ -22,7 +22,7 @@ C:\xampp\htdocs
 				instance('v_posts_users')
 		vendors/
 	environment.php					--define parameters for local or live environment
-	p3.spidercode.biz/				--|start|->
+	wedeln.spidercode.biz/				--|start|->
 		.htaccess					--Rewrite rule, entry point, routes to index.php
 		index.php					--defines routing array
 		NOTES.txt					--this file

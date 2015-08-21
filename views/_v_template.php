@@ -16,6 +16,7 @@
 </head>
 <meta name="viewport" content="width=device-width; initial-scale=1.0">
 <body>
+	<?php include_once("/js/analyticstracking.php") ?>
 	<nav role='navigation'>
 		<div class ='inner'>
 			<a href="#nav" class="nav-collapse" id="nav-collapse">Menu</a>
@@ -26,14 +27,14 @@
 			<!-- Menu for users who are logged in -->
 			<?php if($user): ?>
 				<li class='active'><a href='/users/profile'>Profile</a></li>
-				<li class='active'><a href='/reservations/member'>Reserve yourself</a></li>
-				<li class='active'><a href='/reservations/guest'>Add a guest</a></li>
-				<li class='active'><a href='/reservations/all'>View guests</a></li>
-				<li class='active'><a href='/users/logout'>Logout</a></li>
+				<!-- <li class='active'><a href='/reservations/member'>Reserve yourself</a></li> -->
+				<!-- <li class='active'><a href='/reservations/guest'>Add a guest</a></li> -->
+				<!-- <li class='active'><a href='/reservations/all'>View guests</a></li>	-->	
 				<?php if($user->role == 'vp'): ?>			
 					<li class='active'><a href='/users/signup'>Sign up new member</a></li>
 					<li class='active'><a href='/api/wild'>api data</a></li>
 				<?php endif; ?>
+				<li class='active'><a href='/users/logout'>Logout</a></li>
 			<!-- Menu options for users who are not logged in -->
 			<?php else: ?>
 				<li class='active'><a href='/users/login'>LOGIN</a></li>
